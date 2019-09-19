@@ -31,7 +31,7 @@ app.use('/graphql', graphqlHttp({
         events: () => {
             return ['Romantic Cooking', 'Sailing', 'All-night Coding'];
         },
-        createEvents: (args) => {
+        createEvent: (args) => {
                 const eventName = args.name;
                 return eventName;
             } // Mutation callback function
