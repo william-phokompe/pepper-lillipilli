@@ -13,7 +13,8 @@ app.use(bodyParser.json());
 app.use('/graphql', graphqlHttp({
     schema: buildSchema(`
         type RootQuery {
-            events: [String!]
+            # Enforce return type and events return a list of strings not nullible
+            events: [String!]!
         }
 
         type RootMutation {
