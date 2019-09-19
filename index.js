@@ -26,6 +26,15 @@ app.use('/graphql', graphqlHttp({
             mutation: RootMutation
         }
     `),
-    rootValue: {} // Contains all resolver functions
+    rootValue: {
+        // This will be called when an incoming request, requests a query
+        events: () => {
+            return ['Romantic Cooking', 'Sailing', 'All-night Coding'];
+        },
+        createEvents: (args) => {
+                const eventName = args.name;
+                return eventName;
+            } // Mutation callback function
+    } // Contains all resolver functions
 }));
 app.listen(5000);
