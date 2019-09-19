@@ -21,7 +21,7 @@ app.use('/graphql', graphqlHttp({
             createEvent(name: String) : String
         }
 
-        schema 
+        schema {
             query: RootQuery
             mutation: RootMutation
         }
@@ -35,6 +35,7 @@ app.use('/graphql', graphqlHttp({
                 const eventName = args.name;
                 return eventName;
             } // Mutation callback function
-    } // Contains all resolver functions
+    }, // Contains all resolver functions
+    graphiql: true
 }));
 app.listen(5000);
