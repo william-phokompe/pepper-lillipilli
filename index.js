@@ -5,13 +5,25 @@ const express = require('express'),
     // It will take incoming req and funnel them through 
     // the GraphQL parser and redirect them to relevant Resolvers
     graphqlHttp = require('express-graphql'),
-    {} = require(); // 
+    { buildSchema } = require('graphql'); // User object desctructuring to get specific objects
 
 app.use(bodyParser.json());
 
 // GraphQL Middleware function setup
 app.use('/graphql', graphqlHttp({
-    schema: null,
+    schema: buildSchema(`
+        type RootQuery {
+            events: [String!]
+        }
+
+        type RootMutation {
+        }
+
+        schema 
+            query: RootQuery
+            mutation: RootMutation
+        }
+    `),
     rootValue: {} // Contains all resolver functions
 }));
 app.listen(5000);
