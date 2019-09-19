@@ -18,6 +18,7 @@ app.use('/graphql', graphqlHttp({
         }
 
         type RootMutation {
+            createEvent(name: String) : String
         }
 
         schema 
